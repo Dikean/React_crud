@@ -61,7 +61,7 @@ class App extends React.Component {
         arreglo[contador].personaje = dato.personaje;
         arreglo[contador].anime = dato.anime;
       }
-      contador++;
+      return contador++;
     });
     this.setState({ data: arreglo, modalActualizar: false });
   };
@@ -71,11 +71,12 @@ class App extends React.Component {
     if (opcion === true) {
       var contador = 0;
       var arreglo = this.state.data;
-      arreglo.map((registro) => {
+      arreglo.map((registro,i) => {
+        
         if (dato.id === registro.id) {
           arreglo.splice(contador, 1);
         }
-        contador++;
+        return contador++;
       });
       this.setState({ data: arreglo, modalActualizar: false });
     }
