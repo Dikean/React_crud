@@ -1,6 +1,5 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import './App.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Table,
@@ -14,12 +13,11 @@ import {
 } from "reactstrap";
 
 const data = [
-  { id: 1, personaje: "Naruto", anime: "Naruto" },
-  { id: 2, personaje: "Goku", anime: "Dragon Ball" },
-  { id: 3, personaje: "Kenshin Himura", anime: "Rurouni Kenshin" },
-  { id: 4, personaje: "Monkey D. Luffy", anime: "One Piece" },
-  { id: 5, personaje: "Edward Elric", anime: "Fullmetal Alchemist: Brotherhood"},
-  { id: 6, personaje: "Seto Kaiba", anime: "Yu-Gi-Oh!" },
+  { id: 1, personaje: "Luis Diaz", anime: "Liverpool" },
+  { id: 2, personaje: "Messi", anime: "Psg" },
+  { id: 3, personaje: "Donaruma", anime: "Psg" },
+  { id: 4, personaje: "Cristiano", anime: "Manchester City" },
+  { id: 5, personaje: "Viera", anime: "junior"},
 ];
 
 class App extends React.Component {
@@ -29,8 +27,8 @@ class App extends React.Component {
     modalInsertar: false,
     form: {
       id: "",
-      personaje: "",
-      anime: "",
+      productos: "",
+      precio: "",
     },
   };
 
@@ -89,6 +87,7 @@ class App extends React.Component {
     var lista= this.state.data;
     lista.push(valorNuevo);
     this.setState({ modalInsertar: false, data: lista });
+  
   }
 
   handleChange = (e) => {
@@ -106,15 +105,18 @@ class App extends React.Component {
       <>
         <Container>
         <br />
-          <Button color="success" onClick={()=>this.mostrarModalInsertar()}>Crear</Button>
-          <br />
-          <br />
+
+     <Button color="success" onClick={()=>this.mostrarModalInsertar()}><i class="bi bi-plus-square"></i></Button>
+
+        
+        <div className="shadow-lg p-3 mb-5 bg-body rounded">
           <Table>
-            <thead>
+       
+            <thead className="table-dark">
               <tr>
                 <th>ID</th>
-                <th>Personaje</th>
-                <th>Anime</th>
+                <th>Jugador</th>
+                <th>Club</th>
                 <th>Acción</th>
               </tr>
             </thead>
@@ -130,14 +132,15 @@ class App extends React.Component {
                       color="primary"
                       onClick={() => this.mostrarModalActualizar(dato)}
                     >
-                      Editar
+                      <i class="bi bi-pen"></i>
                     </Button>{" "}
-                    <Button color="danger" onClick={()=> this.eliminar(dato)}>Eliminar</Button>
+                    <Button color="danger" onClick={()=> this.eliminar(dato)}><i class="bi bi-trash"></i></Button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </Table>
+        </div>
         </Container>
 
         <Modal isOpen={this.state.modalActualizar}>
